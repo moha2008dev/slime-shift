@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/SlimeDrip-m2GJv.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/credits.gd" type="Script" id=2]
+[ext_resource path="res://scripts/credits.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 1, 0.607843, 1 )
@@ -68,10 +68,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -457.5
-margin_top = 100.0
-margin_right = 457.5
-margin_bottom = 2639.0
+margin_left = 54.5
+margin_top = 400.0
+margin_right = 969.5
+margin_bottom = 2939.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "game devloped by 
@@ -137,4 +137,5 @@ margin_bottom = 605.0
 anims/RESET = SubResource( 4 )
 anims/up = SubResource( 5 )
 
+[connection signal="pressed" from="exitb" to="." method="_on_exitb_pressed"]
 [connection signal="animation_finished" from="credits_up" to="." method="_on_credits_up_animation_finished"]

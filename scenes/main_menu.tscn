@@ -25,81 +25,61 @@ custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 30.0
-margin_top = 226.0
-margin_right = 342.0
-margin_bottom = 518.0
-
-[node name="new" type="Label" parent="VBoxContainer"]
-margin_right = 312.0
-margin_bottom = 66.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "new"
-
-[node name="load" type="Label" parent="VBoxContainer"]
-margin_top = 70.0
-margin_right = 312.0
-margin_bottom = 136.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "load"
-
-[node name="options" type="Label" parent="VBoxContainer"]
-margin_top = 140.0
-margin_right = 312.0
-margin_bottom = 206.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "options"
-
-[node name="credits" type="Label" parent="VBoxContainer"]
-margin_top = 210.0
-margin_right = 312.0
-margin_bottom = 276.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "credits"
-
-[node name="exit" type="Label" parent="VBoxContainer"]
-margin_top = 280.0
-margin_right = 312.0
-margin_bottom = 346.0
-custom_colors/font_color = Color( 0.882353, 0.211765, 0.211765, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "exit"
-
-[node name="new" type="TextureButton" parent="."]
-margin_left = 18.0
-margin_top = 222.0
-margin_right = 182.0
-margin_bottom = 292.0
-
-[node name="load" type="TextureButton" parent="."]
-margin_left = 16.0
-margin_top = 294.0
-margin_right = 212.0
-margin_bottom = 360.0
-
-[node name="options" type="TextureButton" parent="."]
-margin_left = 14.0
-margin_top = 360.0
-margin_right = 338.0
-margin_bottom = 434.0
-
-[node name="credits" type="TextureButton" parent="."]
-margin_left = 8.0
-margin_top = 440.0
-margin_right = 340.0
-margin_bottom = 498.0
-
-[node name="exit" type="TextureButton" parent="."]
-margin_left = 26.0
-margin_top = 508.0
-margin_right = 188.0
+margin_top = 200.0
+margin_right = 330.0
 margin_bottom = 576.0
 
-[connection signal="pressed" from="new" to="." method="_on_new_pressed"]
-[connection signal="pressed" from="load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[node name="new2" type="Button" parent="VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.2, 0.2, 0.2, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "new"
+flat = true
+
+[node name="load2" type="Button" parent="VBoxContainer"]
+margin_top = 76.0
+margin_right = 300.0
+margin_bottom = 148.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.2, 0.2, 0.2, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "load"
+flat = true
+
+[node name="options2" type="Button" parent="VBoxContainer"]
+margin_top = 152.0
+margin_right = 300.0
+margin_bottom = 224.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.2, 0.2, 0.2, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "options"
+flat = true
+
+[node name="credits2" type="Button" parent="VBoxContainer"]
+margin_top = 228.0
+margin_right = 300.0
+margin_bottom = 300.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.2, 0.2, 0.2, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "credits"
+flat = true
+
+[node name="exit2" type="Button" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 300.0
+margin_bottom = 376.0
+custom_colors/font_color = Color( 0.882353, 0.211765, 0.211765, 1 )
+custom_colors/font_color_hover = Color( 0.2, 0.2, 0.2, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "exit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/new2" to="." method="_on_new2_pressed"]
+[connection signal="pressed" from="VBoxContainer/load2" to="." method="_on_load2_pressed"]
+[connection signal="pressed" from="VBoxContainer/options2" to="." method="_on_options2_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits2" to="." method="_on_credits2_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit2" to="." method="_on_exit2_pressed"]
