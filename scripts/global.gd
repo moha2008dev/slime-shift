@@ -1,4 +1,60 @@
-extends Node
-var next_scene = ""
+extends Control
 
+var cam : Camera2D
+var duration : float
+var timer_intial : float
+var timer_on : bool = false
 
+signal timeout
+
+func _ready():
+	yield(get_tree().create_timer(1),"timeout")
+	$CanvasLayer/ColorRect.hide()
+
+func change_scene(scene_path:String) -> void:
+	$CanvasLayer/ColorRect.show()
+	$CanvasLayer/ColorRect/AnimationPlayer.play_backwards("fade_out")
+	yield($CanvasLayer/ColorRect/AnimationPlayer,"animation_finished")
+	yield(get_tree().create_timer(1),"timeout")
+	get_tree().change_scene(scene_path)
+	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_out")
+	yield($CanvasLayer/ColorRect/AnimationPlayer,"animation_finished")
+	$CanvasLayer/ColorRect.hide()
+
+func change_scene_to(packed_scene:PackedScene) -> void:
+	$CanvasLayer/ColorRect.show()
+	$CanvasLayer/ColorRect/AnimationPlayer.play_backwards("fade_out")
+	yield($CanvasLayer/ColorRect/AnimationPlayer,"animation_finished")
+	yield(get_tree().create_timer(1),"timeout")
+	get_tree().change_scene_to(packed_scene)
+	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_out")
+	yield($CanvasLayer/ColorRect/AnimationPlayer,"animation_finished")
+	$CanvasLayer/ColorRect.hide()
+
+func reload_scene() -> void:
+	$CanvasLayer/ColorRect.show()
+	get_tree().paused = true
+	$CanvasLayer/ColorRect/AnimationPlayer.play_backwards("fade_out")
+	yield($CanvasLayer/ColorRect/AnimationPlayer,"animation_finished")
+	get_tree().reload_current_scene()
+	yield(get_tree().create_timer(0.4),"timeout")
+	$CanvasLayer/ColorRect/AnimationPlayer.play("fade_out")
+	get_tree().paused = false
+	yield($CanvasLayer/ColorRect/AnimationPlayer,"animation_finished")
+	$CanvasLayer/ColorRect.hide()
+
+func create_timer(time : float) -> void:
+	duration = time
+	timer_intial = OS.get_ticks_msec()
+	timer_on = true
+
+func _process(delta):
+	if timer_on:
+		var elapsed = (OS.get_ticks_msec() - timer_intial) / 1000.0
+		if elapsed >= duration:
+			timer_on = false
+			emit_signal("timeout")
+	$CanvasLayer/Label.text = str(Engine.get_frames_per_second())
+
+func show_fps(x:bool)->void:
+	$CanvasLayer/Label.visible = x

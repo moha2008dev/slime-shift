@@ -1,6 +1,6 @@
 extends Control
 
-var next_scene_to_load = Global.next_scene
+var next_scene_to_load = "res://scenes/world.tscn"
 
 func _ready():
 	$loading.play("loading")
@@ -16,4 +16,4 @@ func load_scene_async():
 	yield(get_tree().create_timer(2.5),"timeout")
 	var packed_scene = loader.get_resource()
 	if packed_scene :
-		get_tree().change_scene_to(packed_scene)
+		Global.change_scene_to(packed_scene)

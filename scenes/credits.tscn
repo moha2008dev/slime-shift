@@ -1,26 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/SlimeDrip-m2GJv.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/credits.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 1, 0.607843, 1 )
+bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 size = 45
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 13
-extra_spacing_char = 14
+extra_spacing_char = 10
 extra_spacing_space = 17
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 65
-outline_size = 6
+[sub_resource type="DynamicFont" id=7]
+size = 20
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_char = 14
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -34,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 54.5, 400 ) ]
+"values": [ Vector2( 0, 600 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -50,7 +51,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 30 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 54.5, 600 ), Vector2( 54.5, -2730 ) ]
+"values": [ Vector2( 0, 600 ), Vector2( 0, -2550 ) ]
 }
 
 [node name="credits" type="Control"]
@@ -59,8 +60,8 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 1024.0
-margin_bottom = 602.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="credis" type="Label" parent="."]
@@ -68,15 +69,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -457.5
-margin_top = 100.0
-margin_right = 457.5
-margin_bottom = 2825.0
+margin_left = -320.0
+margin_top = 420.0
+margin_right = 328.0
+margin_bottom = 2959.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "slime shift
-game
-devloped by 
+custom_fonts/font = SubResource( 6 )
+text = "game devloped by
 space game
 studio
 
@@ -116,23 +115,28 @@ sound designer
 
 5-rashad :
 
-game play
-programer"
+gameplay programer"
 align = 1
 valign = 1
 
 [node name="exitb" type="Button" parent="."]
-margin_left = 15.0
-margin_top = 519.0
-margin_right = 174.0
-margin_bottom = 591.0
+margin_left = 12.0
+margin_top = 331.0
+margin_right = 45.0
+margin_bottom = 352.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.882353, 0.211765, 0.211765, 1 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
 text = "exit"
 flat = true
 
 [node name="credits_up" type="AnimationPlayer" parent="."]
+autoplay = "up"
 anims/RESET = SubResource( 4 )
 anims/up = SubResource( 5 )
 

@@ -1,0 +1,296 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://fonts/SlimeDrip-m2GJv.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/options.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 1, 0.6, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.129412, 0.101961, 0.101961, 0.662745 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 10
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=9]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[node name="options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 0.901
+anchor_bottom = 0.886
+margin_right = 62.36
+margin_bottom = 43.04
+custom_styles/panel = SubResource( 1 )
+
+[node name="ColorRect" type="Panel" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -213.5
+margin_top = -45.0
+margin_right = 201.5
+margin_bottom = 162.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="GameName" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -125.0
+margin_right = 125.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.588235, 0.909804, 0.2, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "slime Shift"
+align = 1
+
+[node name="option" type="RichTextLabel" parent="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -69.0
+margin_top = 62.0
+margin_right = 69.0
+margin_bottom = 155.0
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "
+[center][wave]options[/wave][/center]"
+text = "
+options"
+
+[node name="sfx" type="CheckBox" parent="Panel"]
+margin_left = 135.0
+margin_top = 149.0
+margin_right = 187.0
+margin_bottom = 179.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/hover_pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+text = " sfx "
+align = 1
+
+[node name="v-sync" type="CheckBox" parent="Panel"]
+margin_left = 207.0
+margin_top = 149.0
+margin_right = 271.0
+margin_bottom = 179.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/hover_pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+text = "v-sync"
+align = 1
+
+[node name="Show FPS" type="CheckBox" parent="Panel"]
+margin_left = 289.0
+margin_top = 149.0
+margin_right = 384.0
+margin_bottom = 179.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/hover_pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 12 )
+text = "Show FPS"
+align = 1
+
+[node name="AutoSave" type="CheckBox" parent="Panel"]
+margin_left = 404.0
+margin_top = 149.0
+margin_right = 493.0
+margin_bottom = 179.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 12 )
+custom_styles/hover_pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 12 )
+text = "AutoSave"
+align = 1
+
+[node name="resolution" type="OptionButton" parent="Panel"]
+margin_left = 310.0
+margin_top = 191.0
+margin_right = 441.0
+margin_bottom = 219.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+text = "resolution"
+flat = true
+
+[node name="screen" type="OptionButton" parent="Panel"]
+margin_left = 282.0
+margin_top = 229.0
+margin_right = 383.0
+margin_bottom = 257.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 17 )
+text = "screen"
+flat = true
+
+[node name="fps" type="OptionButton" parent="Panel"]
+margin_left = 243.0
+margin_top = 266.0
+margin_right = 306.0
+margin_bottom = 294.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 18 )
+text = "fps"
+flat = true
+
+[node name="resolution_label" type="Label" parent="Panel"]
+margin_left = 185.0
+margin_top = 195.0
+margin_right = 295.0
+margin_bottom = 217.0
+custom_fonts/font = SubResource( 7 )
+text = "resolution :"
+align = 1
+
+[node name="screen_label" type="Label" parent="Panel"]
+margin_left = 185.0
+margin_top = 233.0
+margin_right = 265.0
+margin_bottom = 255.0
+custom_fonts/font = SubResource( 7 )
+text = "screen :"
+align = 1
+
+[node name="fps_label" type="Label" parent="Panel"]
+margin_left = 185.0
+margin_top = 269.0
+margin_right = 227.0
+margin_bottom = 291.0
+custom_fonts/font = SubResource( 7 )
+text = "fps :"
+align = 1
+
+[node name="reset" type="Button" parent="Panel"]
+margin_left = 380.0
+margin_top = 303.0
+margin_right = 448.0
+margin_bottom = 331.0
+custom_colors/font_color = Color( 0.882353, 0.211765, 0.211765, 1 )
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+text = "reset"
+flat = true
+
+[node name="exit" type="Button" parent="Panel"]
+margin_left = 180.0
+margin_top = 303.0
+margin_right = 228.0
+margin_bottom = 331.0
+custom_colors/font_color = Color( 0.686275, 0.596078, 0.596078, 1 )
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+text = "exit"
+flat = true
+
+[connection signal="toggled" from="Panel/sfx" to="." method="_on_sfx_toggled"]
+[connection signal="toggled" from="Panel/v-sync" to="." method="_on_vsync_toggled"]
+[connection signal="toggled" from="Panel/Show FPS" to="." method="_on_Show_FPS_toggled"]
+[connection signal="toggled" from="Panel/AutoSave" to="." method="_on_AutoSave_toggled"]
+[connection signal="item_selected" from="Panel/resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="Panel/screen" to="." method="_on_screen_item_selected"]
+[connection signal="item_selected" from="Panel/fps" to="." method="_on_fps_item_selected"]
+[connection signal="pressed" from="Panel/reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Panel/exit" to="." method="_on_exit_pressed"]
