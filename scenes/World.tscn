@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Box.gd" type="Script" id=2]
+
+[sub_resource type="QuadMesh" id=1]
+size = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 320, 10 )
+
+[sub_resource type="QuadMesh" id=4]
+size = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 8 )
+
+[node name="World" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Player" type="KinematicBody2D" parent="." groups=["Player"]]
+position = Vector2( 44, 22 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Player"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Player"]
+margin_left = -20.0
+margin_top = -26.0
+margin_right = 20.0
+margin_bottom = -12.0
+grow_horizontal = 2
+align = 1
+valign = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 320, 370 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="Box" type="KinematicBody2D" parent="." groups=["Box"]]
+position = Vector2( 147, 352 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Box"]
+mesh = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource( 5 )
