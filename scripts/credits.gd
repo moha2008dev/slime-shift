@@ -8,8 +8,10 @@ func _ready():
 
 func _on_credits_up_animation_finished(anim_name):
 	if anim_name == "up":
-		get_tree().change_scene(previos_scene)
+		Global.next_scene = "res://scenes/main_menu.tscn"
+		get_tree().change_scene("res://scenes/loading.tscn")
 
 
 func _on_exitb_pressed():
-	get_tree().change_scene(previos_scene)
+	Global.next_scene = "res://scenes/main_menu.tscn"
+	get_tree().change_scene("res://scenes/loading.tscn")
