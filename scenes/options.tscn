@@ -270,7 +270,7 @@ custom_styles/pressed = SubResource( 13 )
 custom_styles/focus = SubResource( 13 )
 custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 13 )
-text = "reset"
+text = "Reset"
 flat = true
 
 [node name="exit" type="Button" parent="Panel"]
@@ -286,12 +286,8 @@ custom_styles/pressed = SubResource( 14 )
 custom_styles/focus = SubResource( 14 )
 custom_styles/disabled = SubResource( 14 )
 custom_styles/normal = SubResource( 14 )
-text = "exit"
+text = "Exit"
 flat = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 372.0
-margin_bottom = 40.0
 
 [connection signal="toggled" from="Panel/sfx" to="." method="_on_sfx_toggled"]
 [connection signal="toggled" from="Panel/v-sync" to="." method="_on_vsync_toggled"]
