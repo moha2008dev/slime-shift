@@ -51,7 +51,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 30 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 600 ), Vector2( 0, -2550 ) ]
+"values": [ Vector2( 0, 600 ), Vector2( 0, -2750 ) ]
 }
 
 [node name="credits" type="Control"]
@@ -69,12 +69,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = 600.0
-margin_right = 648.0
-margin_bottom = 3139.0
+margin_left = -320.0
+margin_top = 420.0
+margin_right = 328.0
+margin_bottom = 3331.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 6 )
-text = "game devloped by
+text = "slime shift
+devloped by
 space game
 studio
 
@@ -90,10 +92,9 @@ ui programer
 
 
 
-2-iyed abbes:
+2-rashad :
 
-game designer
-lt Maneger
+gameplay programer
 
 
 
@@ -101,6 +102,8 @@ lt Maneger
 
 narrator 
 level designer
+game designer
+lt maneger 
 
 
 
@@ -112,9 +115,13 @@ sound designer
 
 
 
-5-rashad :
+5-aboAvudl:
 
-gameplay programer"
+2d artist 
+bg artist 
+
+
+"
 align = 1
 valign = 1
 
