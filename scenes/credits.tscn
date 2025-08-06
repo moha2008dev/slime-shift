@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/Audiowide-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/credits.gd" type="Script" id=2]
+[ext_resource path="res://2d arts/Artboard_1.png2.png" type="Texture" id=3]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 1, 0.607843, 1 )
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 720, 405 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 45
@@ -62,16 +64,17 @@ script = ExtResource( 2 )
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 9 )
 
 [node name="credis" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_top = 600.0
-margin_right = 711.0
-margin_bottom = 4075.0
+margin_left = -320.0
+margin_top = 420.0
+margin_right = 391.0
+margin_bottom = 3895.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 6 )

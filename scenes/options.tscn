@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
+[ext_resource path="res://2d arts/Artboard_1.png2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/options.gd" type="Script" id=2]
 [ext_resource path="res://fonts/Audiowide-Regular.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 1, 0.6, 1 )
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 720, 405 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.129412, 0.101961, 0.101961, 0.662745 )
@@ -81,7 +83,7 @@ anchor_right = 0.901
 anchor_bottom = 0.886
 margin_right = 62.36
 margin_bottom = 43.04
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 19 )
 
 [node name="ColorRect" type="Panel" parent="Panel"]
 anchor_left = 0.5
