@@ -50,3 +50,7 @@ func _switch_states():
 		index = 0 if index == states.size()-1 else index + 1
 		state = states[index][0]
 		speed = states[index][1]
+
+
+func _on_exit2_pressed():
+	Global.change_scene("res://scenes/main_menu.tscn")

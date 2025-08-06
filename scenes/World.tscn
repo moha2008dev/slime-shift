@@ -1,14 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Box.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/StateArea.gd" type="Script" id=3]
+[ext_resource path="res://fonts/Audiowide-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/StateArea.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 320, 10 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40, 40 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 9
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="World" type="Node2D"]
 __meta__ = {
@@ -17,7 +27,6 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 44, 22 )
-state = "Liquid"
 
 [node name="Box" parent="." instance=ExtResource( 2 )]
 
@@ -29,10 +38,31 @@ shape = SubResource( 3 )
 
 [node name="StateArea" type="Area2D" parent="."]
 position = Vector2( 304, 320 )
-script = ExtResource( 3 )
-state = "Iced"
+script = ExtResource( 4 )
+state = "Liquid"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateArea"]
 shape = SubResource( 4 )
 
+[node name="exit2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 250.0
+margin_top = 25.0
+margin_right = 368.0
+margin_bottom = 77.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.882353, 0.211765, 0.211765, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
+text = "Exit"
+flat = true
+
 [connection signal="body_entered" from="StateArea" to="StateArea" method="_on_StateArea_body_entered"]
+[connection signal="pressed" from="exit2" to="Player" method="_on_exit2_pressed"]
