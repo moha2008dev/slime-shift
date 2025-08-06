@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
-[ext_resource path="res://fonts/SlimeDrip-m2GJv.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/Audiowide-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://2d arts/Artboard_1.png2.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxTexture" id=9]
@@ -43,15 +43,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -270.0
-margin_top = -230.0
+margin_top = -220.0
 margin_right = 30.0
-margin_bottom = 7.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_bottom = 72.0
+rect_scale = Vector2( 0.5, 0.5 )
 custom_constants/separation = 8
 
 [node name="new2" type="Button" parent="VBoxContainer"]
 margin_right = 300.0
-margin_bottom = 41.0
+margin_bottom = 52.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.0352941, 0.627451, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -60,13 +60,13 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 3 )
 custom_styles/normal = SubResource( 3 )
-text = "new"
+text = "new game"
 flat = true
 
-[node name="load2" type="Button" parent="VBoxContainer"]
-margin_top = 49.0
+[node name="continue" type="Button" parent="VBoxContainer"]
+margin_top = 60.0
 margin_right = 300.0
-margin_bottom = 90.0
+margin_bottom = 112.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.545098, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -75,13 +75,13 @@ custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 5 )
-text = "load"
+text = "continue"
 flat = true
 
 [node name="options2" type="Button" parent="VBoxContainer"]
-margin_top = 98.0
+margin_top = 120.0
 margin_right = 300.0
-margin_bottom = 139.0
+margin_bottom = 172.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 0.992157, 0, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -94,9 +94,9 @@ text = "options"
 flat = true
 
 [node name="credits2" type="Button" parent="VBoxContainer"]
-margin_top = 147.0
+margin_top = 180.0
 margin_right = 300.0
-margin_bottom = 188.0
+margin_bottom = 232.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0, 0.054902, 1, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -109,9 +109,9 @@ text = "credits"
 flat = true
 
 [node name="exit2" type="Button" parent="VBoxContainer"]
-margin_top = 196.0
+margin_top = 240.0
 margin_right = 300.0
-margin_bottom = 237.0
+margin_bottom = 292.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.882353, 0.211765, 0.211765, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -124,7 +124,7 @@ text = "exit"
 flat = true
 
 [connection signal="pressed" from="VBoxContainer/new2" to="." method="_on_new2_pressed"]
-[connection signal="pressed" from="VBoxContainer/load2" to="." method="_on_load2_pressed"]
+[connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_load2_pressed"]
 [connection signal="pressed" from="VBoxContainer/options2" to="." method="_on_options2_pressed"]
 [connection signal="pressed" from="VBoxContainer/credits2" to="." method="_on_credits2_pressed"]
 [connection signal="pressed" from="VBoxContainer/exit2" to="." method="_on_exit2_pressed"]
