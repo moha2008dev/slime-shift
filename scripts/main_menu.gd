@@ -18,5 +18,5 @@ func _on_credits2_pressed():
 
 
 func _on_exit2_pressed():
-	get_tree().quit()
+	Global.quit()
 

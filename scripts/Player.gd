@@ -1,27 +1,34 @@
 extends KinematicBody2D
 
-var state = "Normal"
-var x = 0
-var states = [["Normal",250],["Iced",150],["Liquid",350]]
-var velocity = Vector2()
-var speed = 250
-var jump = -320
-var gravity = 1200
-var push_speed = Vector2(300,0)
+export(String,"Normal","Iced","Liquid") var state : String = "Normal"
+var x : int = 0
+var can_climb : bool = false
+var climbing : bool = false
+var velocity : Vector2 = Vector2()
+var speed : int = 250
+var jump : int = -320
+var gravity :int = 1200
+var height : float = 0
 
-func _physics_process(_delta):
-	$Label.text = state
-	_move()
+func _physics_process(_delta) -> void:
+	$Label.text = str(int($LiquidTimer.time_left)) if state == "Liquid" && !$MeshInstance2D/AnimationPlayer.is_playing() else ""
+#	$Label.text = state
+	if !$MeshInstance2D/AnimationPlayer.is_playing():_move()
+	else:velocity.x = 0
 	_jump()
 	_switch_states()
+	pause()
 	if state == "Iced": _push()
-	velocity = move_and_slide(velocity,Vector2.UP,false,4,PI/4,false)
+	velocity = move_and_slide(velocity,Vector2.UP)
 
-func _move():
-	x = Input.get_axis("left","right")
-	velocity.x = lerp(velocity.x,speed * x,0.2)
+func _move() -> void:
+	x = int(Input.get_axis("left","right"))
+	velocity.x = lerp(velocity.x,speed * x,0.2) if !climbing else lerp(velocity.x,speed/3.0 * x,0.2)
 
-func _jump():
+func _jump() -> void:
+	if climbing:
+		velocity.y = int(Input.get_axis("up","down")) * 100
+		return
 	if !is_on_floor():
 		velocity.y += gravity * get_physics_process_delta_time()
 		if state == "Normal" && Input.is_action_just_pressed("up"):
@@ -30,13 +37,17 @@ func _jump():
 				else:
 					$CoyoteTimer.stop()
 					velocity.y = jump
+		height = velocity.y
 	else:
+		if state == "Iced" && height > 450:
+			die()
 		velocity.y = 1
 		if (Input.is_action_just_pressed("up") || !$BufferTimer.is_stopped()) && state == "Normal":
 			$BufferTimer.stop()
 			velocity.y = jump
+		height = 0
 
-func _push():
+func _push() -> void:
 	if get_slide_count() > 0:
 		for i in get_slide_count():
 			var col = get_slide_collision(i)
@@ -44,13 +55,36 @@ func _push():
 			if box.is_in_group("Box"):
 				box.apply_movement(-col.normal*0.75)
 
-func _switch_states():
-	if Input.is_action_just_pressed("switch"):
-		var index = states.find([state,speed])
-		index = 0 if index == states.size()-1 else index + 1
-		state = states[index][0]
-		speed = states[index][1]
+func _switch_states() -> void:
+	if state == "Normal":
+		speed = 250
+		$LiquidTimer.stop()
+		can_climb = true
+	elif state == "Iced":
+		speed = 150
+		can_climb = false
+		$LiquidTimer.stop()
+	elif state == "Liquid":
+		speed = 350
+		if $LiquidTimer.is_stopped() && !$MeshInstance2D/AnimationPlayer.is_playing(): $LiquidTimer.start()
+		elif $LiquidTimer.time_left < 4:
+			$Label.set_deferred("custom_colors/font_color",Color("#d50000"))
+		else:
+			$Label.set_deferred("custom_colors/font_color",Color("#ffffff"))
+		can_climb = false
 
+func _on_LiquidTimer_timeout() -> void:
+	die()
 
-func _on_exit2_pressed():
-	Global.change_scene("res://scenes/main_menu.tscn")
+func die() -> void:
+	Global.reload_scene()
+
+func tp(pos:Vector2) -> void:
+	$MeshInstance2D/AnimationPlayer.play("anim")
+	yield($MeshInstance2D/AnimationPlayer,"animation_finished")
+	global_position = pos
+	$MeshInstance2D/AnimationPlayer.play_backwards("anim")
+
+func pause() -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		get_parent().add_child(preload("res://scenes/PauseMenu.tscn").instance())
