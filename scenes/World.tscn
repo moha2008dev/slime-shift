@@ -89,18 +89,18 @@ custom_styles/normal = SubResource( 6 )
 text = "Exit"
 flat = true
 
-[node name="transformer" type="Node2D" parent="."]
+[node name="stateArea" type="Node2D" parent="."]
 position = Vector2( 306, 348 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="transformer"]
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="stateArea"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 7 )
 animation = "Normal"
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="transformer"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="stateArea"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="transformer/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stateArea/StaticBody2D2"]
 position = Vector2( -4, 12 )
 shape = SubResource( 8 )
 
