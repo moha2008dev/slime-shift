@@ -139,7 +139,6 @@ __meta__ = {
 [node name="StateArea" type="Area2D" parent="."]
 position = Vector2( 328, 347 )
 script = ExtResource( 4 )
-state = "Iced"
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="StateArea"]
 position = Vector2( 2, -7 )
