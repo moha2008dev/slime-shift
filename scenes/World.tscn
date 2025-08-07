@@ -137,9 +137,9 @@ __meta__ = {
 }
 
 [node name="StateArea" type="Area2D" parent="."]
-position = Vector2( 313, 355 )
+position = Vector2( 328, 347 )
 script = ExtResource( 4 )
-state = "Liquid"
+state = "Iced"
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="StateArea"]
 position = Vector2( 2, -7 )
@@ -159,9 +159,11 @@ position = Vector2( 0, -1 )
 shape = SubResource( 18 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 67, 332 )
+position = Vector2( 192, 320 )
+state = "Liquid"
 
 [node name="Box" parent="." instance=ExtResource( 2 )]
+position = Vector2( 138, 344 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 320, 370 )
@@ -173,5 +175,6 @@ shape = SubResource( 3 )
 tile_set = SubResource( 17 )
 cell_size = Vector2( 32, 32 )
 format = 1
+tile_data = PoolIntArray( 720896, 0, 0, 720897, 0, 1, 720898, 0, 1, 720899, 0, 1, 720900, 0, 1, 720901, 0, 1, 720902, 0, 1, 720903, 0, 1, 720904, 0, 1, 720905, 0, 1, 720906, 0, 1, 720907, 0, 1, 720908, 0, 1, 720909, 0, 1, 720910, 0, 1, 720911, 0, 1, 720912, 0, 1, 720913, 0, 1, 720914, 0, 1, 720915, 0, 2 )
 
 [connection signal="body_entered" from="StateArea" to="StateArea" method="_on_StateArea_body_entered"]
