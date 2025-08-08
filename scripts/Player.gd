@@ -9,8 +9,11 @@ var speed : int = 250
 var jump : int = -320
 var gravity :int = 1200
 var height : float = 0
+func _ready():
+	$MeshInstance2D.play(state)
 
 func _physics_process(_delta) -> void:
+	$MeshInstance2D.play(state)
 	$Label.text = str(int($LiquidTimer.time_left)) if state == "Liquid" && !$MeshInstance2D/AnimationPlayer.is_playing() else ""
 #	$Label.text = state
 	if !$MeshInstance2D/AnimationPlayer.is_playing():_move()
