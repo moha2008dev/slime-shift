@@ -11,3 +11,8 @@ func _on_StateArea_body_entered(body : Node2D):
 		body.tp(global_position + Vector2(0,-20))
 		yield(get_tree().create_timer(1),"timeout")
 		body.state = state
+
+
+func _on_killArea_body_entered(body):
+	if body.is_in_group("Player"):
+		$"../Player".die()

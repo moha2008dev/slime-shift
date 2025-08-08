@@ -1,6 +1,14 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Camera2D
+
+func _process(delta):
+	if Input.is_action_pressed(\"inspect\"):
+		position = get_parent().get_local_mouse_position().normalized() * 200
+	else:
+		position = Vector2()
+"
 
 [node name="Camera2D" type="Camera2D"]
-script = ExtResource( 1 )
+script = SubResource( 1 )
