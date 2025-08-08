@@ -6,8 +6,8 @@
 [ext_resource path="res://2d arts/playerN.png" type="Texture" id=4]
 [ext_resource path="res://2d arts/playerC.png" type="Texture" id=5]
 [ext_resource path="res://2d arts/playerL1.png" type="Texture" id=6]
-[ext_resource path="res://2d arts/playerL2.png" type="Texture" id=7]
-[ext_resource path="res://2d arts/playerL3.png" type="Texture" id=8]
+[ext_resource path="res://2d arts/playerL6.png" type="Texture" id=7]
+[ext_resource path="res://2d arts/playerL5.png" type="Texture" id=8]
 
 [sub_resource type="Shader" id=7]
 code = "
@@ -67,7 +67,7 @@ animations = [ {
 "name": "Iced",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "Liquid",
 "speed": 1.0
