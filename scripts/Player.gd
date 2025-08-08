@@ -27,7 +27,11 @@ func _physics_process(_delta) -> void:
 func _move() -> void:
 	x = int(Input.get_axis("left","right"))
 	velocity.x = lerp(velocity.x,speed * x,0.2) if !climbing else lerp(velocity.x,speed/3.0 * x,0.2)
-
+	if x>0:
+		$MeshInstance2D.flip_h = false
+	elif x < 0 :
+		$MeshInstance2D.flip_h = true
+		
 func _jump() -> void:
 	if climbing:
 		velocity.y = int(Input.get_axis("up","down")) * 100
@@ -69,7 +73,7 @@ func _switch_states() -> void:
 		$LiquidTimer.stop()
 	elif state == "Liquid":
 		speed = 350
-		if $LiquidTimer.is_stopped() && !$MeshInstance2D/AnimationPlayer.is_playing(): $LiquidTimer.start()
+		if $LiquidTimer.is_stopped() && !$MeshInstance2D/AnimationPlayer.is_playing(): $LiquidTimer.start() and $MeshInstance2D.play("Liquid")
 		elif $LiquidTimer.time_left < 4:
 			$Label.set_deferred("custom_colors/font_color",Color("#d50000"))
 		else:
