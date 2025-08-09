@@ -9,6 +9,7 @@ var speed : int = 250
 var jump : int = -320
 var gravity :int = 1200
 var height : float = 0
+signal animp
 func _ready():
 	$MeshInstance2D.play(state)
 
@@ -23,6 +24,7 @@ func _physics_process(_delta) -> void:
 	pause()
 	if state == "Iced": _push()
 	velocity = move_and_slide(velocity,Vector2.UP)
+
 
 func _move() -> void:
 	x = int(Input.get_axis("left","right"))
@@ -84,8 +86,8 @@ func _on_LiquidTimer_timeout() -> void:
 	die()
 
 func die() -> void:
+	$MeshInstance2D/AnimationPlayer.play("die")
 	Global.reload_scene()
-
 func tp(pos:Vector2) -> void:
 	$MeshInstance2D/AnimationPlayer.play("anim")
 	yield($MeshInstance2D/AnimationPlayer,"animation_finished")

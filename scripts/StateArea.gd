@@ -10,6 +10,8 @@ func _on_StateArea_body_entered(body : Node2D):
 		if body.state == state: return
 		body.tp(global_position + Vector2(0,-20))
 		yield(get_tree().create_timer(1),"timeout")
+		$"../Player/AnimationPlayer".play("transform")
+		yield(get_tree().create_timer(0.2),"timeout")
 		body.state = state
 
 
