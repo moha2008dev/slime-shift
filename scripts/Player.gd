@@ -9,15 +9,23 @@ var speed : int = 250
 var jump : int = -320
 var gravity :int = 1200
 var height : float = 0
-signal animp
-func _ready():
-	$MeshInstance2D.play(state)
+
+func _ready() -> void:
+	$AnimatedSprite2D.play(state)
+	match $AnimatedSprite2D.animation:
+		"Normal":
+			$AnimatedSprite2D.material.set("shader_param/color",Color(0.15,0.9,1))
+		"Iced":
+			$AnimatedSprite2D.material.set("shader_param/color",Color(0.27,0.27,1))
+		"Liquid":
+			$AnimatedSprite2D.material.set("shader_param/color",Color(1,0.3,0.3))
 
 func _physics_process(_delta) -> void:
-	$MeshInstance2D.play(state)
-	$Label.text = str(int($LiquidTimer.time_left)) if state == "Liquid" && !$MeshInstance2D/AnimationPlayer.is_playing() else ""
-#	$Label.text = state
-	if !$MeshInstance2D/AnimationPlayer.is_playing():_move()
+	if $CPUParticles2D.emitting:
+		return
+	$Label.text = str(int($LiquidTimer.time_left)) if state == $AnimatedSprite2D.animation\
+	&& state == "Liquid" && !$AnimatedSprite2D/AnimationPlayer.is_playing() else ""
+	if !$AnimatedSprite2D/AnimationPlayer.is_playing():_move()
 	else:velocity.x = 0
 	_jump()
 	_switch_states()
@@ -25,15 +33,14 @@ func _physics_process(_delta) -> void:
 	if state == "Iced": _push()
 	velocity = move_and_slide(velocity,Vector2.UP)
 
-
 func _move() -> void:
 	x = int(Input.get_axis("left","right"))
 	velocity.x = lerp(velocity.x,speed * x,0.2) if !climbing else lerp(velocity.x,speed/3.0 * x,0.2)
 	if x>0:
-		$MeshInstance2D.flip_h = false
+		$AnimatedSprite2D.flip_h = false
 	elif x < 0 :
-		$MeshInstance2D.flip_h = true
-		
+		$AnimatedSprite2D.flip_h = true
+
 func _jump() -> void:
 	if climbing:
 		velocity.y = int(Input.get_axis("up","down")) * 100
@@ -49,6 +56,10 @@ func _jump() -> void:
 		height = velocity.y
 	else:
 		if state == "Iced" && height > 450:
+			$CPUParticles2D.emitting = true
+			$AnimatedSprite2D.hide()
+			Global.cam.shake(0.5,1)
+			yield(get_tree().create_timer(1),"timeout")
 			die()
 		velocity.y = 1
 		if (Input.is_action_just_pressed("up") || !$BufferTimer.is_stopped()) && state == "Normal":
@@ -75,24 +86,37 @@ func _switch_states() -> void:
 		$LiquidTimer.stop()
 	elif state == "Liquid":
 		speed = 350
-		if $LiquidTimer.is_stopped() && !$MeshInstance2D/AnimationPlayer.is_playing(): $LiquidTimer.start() and $MeshInstance2D.play("Liquid")
+		if $LiquidTimer.is_stopped() && !$AnimatedSprite2D/AnimationPlayer.is_playing(): $LiquidTimer.start() and $AnimatedSprite2D.play("Liquid")
 		elif $LiquidTimer.time_left < 4:
 			$Label.set_deferred("custom_colors/font_color",Color("#d50000"))
 		else:
 			$Label.set_deferred("custom_colors/font_color",Color("#ffffff"))
 		can_climb = false
 
+func _play(anim:String) -> void:
+	$AnimatedSprite2D.play(anim)
+
 func _on_LiquidTimer_timeout() -> void:
 	die()
 
 func die() -> void:
-	$MeshInstance2D/AnimationPlayer.play("die")
 	Global.reload_scene()
+
 func tp(pos:Vector2) -> void:
-	$MeshInstance2D/AnimationPlayer.play("anim")
-	yield($MeshInstance2D/AnimationPlayer,"animation_finished")
+	$AnimatedSprite2D.stop()
+	$LiquidTimer.stop()
+	$AnimatedSprite2D/AnimationPlayer.play("anim")
+	yield($AnimatedSprite2D/AnimationPlayer,"animation_finished")
 	global_position = pos
-	$MeshInstance2D/AnimationPlayer.play_backwards("anim")
+	yield(get_tree(),"idle_frame")
+	match $AnimatedSprite2D.animation:
+		"Normal":
+			$AnimatedSprite2D.material.set("shader_param/color",Color(0.15,0.9,1))
+		"Iced":
+			$AnimatedSprite2D.material.set("shader_param/color",Color(0.27,0.27,1))
+		"Liquid":
+			$AnimatedSprite2D.material.set("shader_param/color",Color(1,0.3,0.3))
+	$AnimatedSprite2D/AnimationPlayer.play_backwards("anim")
 
 func pause() -> void:
 	if Input.is_action_pressed("ui_cancel"):

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/StateArea.gd" type="Script" id=1]
+[ext_resource path="res://2d arts/iced.png" type="Texture" id=2]
+[ext_resource path="res://2d arts/liquid.png" type="Texture" id=3]
+[ext_resource path="res://2d arts/normal.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Iced",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Liquid",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 19, 12 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 18, 6 )
+
+[node name="StateArea" type="Area2D"]
+position = Vector2( 328, 347 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 2, -7 )
+scale = Vector2( 0.125, 0.125 )
+frames = SubResource( 7 )
+animation = "Normal"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, -1 )
+shape = SubResource( 18 )
+
+[connection signal="body_entered" from="." to="." method="_on_StateArea_body_entered"]
