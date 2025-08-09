@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Box.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/StateArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/World.gd" type="Script" id=5]
+[ext_resource path="res://scripts/level2.gd" type="Script" id=5]
 [ext_resource path="res://2d arts/tileset1.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=21]
@@ -148,10 +148,6 @@ func _on_killArea_body_entered(body):
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 1326, 81 )
 
-[sub_resource type="QuadMesh" id=23]
-
-[sub_resource type="RectangleShape2D" id=24]
-
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
 __meta__ = {
@@ -160,10 +156,6 @@ __meta__ = {
 
 [node name="StateArea" parent="." instance=ExtResource( 4 )]
 state = "Iced"
-
-[node name="StateArea2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 12, 187 )
-state = "Liquid"
 
 [node name="StateArea3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 574, 348 )
@@ -180,7 +172,7 @@ anims/RESET = SubResource( 21 )
 anims/trf = SubResource( 22 )
 
 [node name="Box" parent="." instance=ExtResource( 2 )]
-position = Vector2( 174, 344 )
+position = Vector2( 150, 344 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 17 )
@@ -197,17 +189,4 @@ script = SubResource( 20 )
 position = Vector2( 341, 743 )
 shape = SubResource( 19 )
 
-[node name="win" type="Area2D" parent="."]
-position = Vector2( 132, 344 )
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="win"]
-modulate = Color( 0.0392157, 0.996078, 0.211765, 1 )
-position = Vector2( -1, -1 )
-scale = Vector2( 20.5, 18.5 )
-mesh = SubResource( 23 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="win"]
-shape = SubResource( 24 )
-
 [connection signal="body_entered" from="killArea" to="killArea" method="_on_killArea_body_entered"]
-[connection signal="body_entered" from="win" to="StateArea" method="_on_win_body_entered"]

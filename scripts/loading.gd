@@ -1,6 +1,6 @@
 extends Control
 
-var next_scene_to_load = "res://scenes/world.tscn"
+var next_scene_to_load = Global.next_scene
 
 func _ready():
 	$loading.play("loading")

@@ -3,11 +3,11 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Audiowide-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://2d arts/playerL.png" type="Texture" id=3]
-[ext_resource path="res://2d arts/playerN.png" type="Texture" id=4]
+[ext_resource path="res://2d arts/playerN1.png" type="Texture" id=4]
 [ext_resource path="res://2d arts/playerC.png" type="Texture" id=5]
 [ext_resource path="res://2d arts/playerL1.png" type="Texture" id=6]
-[ext_resource path="res://2d arts/playerL6.png" type="Texture" id=7]
-[ext_resource path="res://2d arts/playerL5.png" type="Texture" id=8]
+[ext_resource path="res://2d arts/playerL2.png" type="Texture" id=7]
+[ext_resource path="res://2d arts/playerL4.png" type="Texture" id=8]
 [ext_resource path="res://shaders/teleport.gdshader" type="Shader" id=9]
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -24,8 +24,8 @@ animations = [ {
 "name": "Iced",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ) ],
-"loop": false,
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
 "name": "Liquid",
 "speed": 1.0
 }, {
@@ -105,13 +105,14 @@ font_data = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 1 )
+state = "Iced"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite" parent="."]
 material = SubResource( 8 )
-position = Vector2( -5.96046e-07, -2 )
-scale = Vector2( 0.09, 0.09 )
+position = Vector2( 0, -1 )
+scale = Vector2( 0.08, 0.08 )
 frames = SubResource( 11 )
-animation = "Normal"
+animation = "Liquid"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 pause_mode = 2

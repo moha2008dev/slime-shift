@@ -9,6 +9,7 @@ var auto_save = false
 var resolution = 0
 var screen = 0 
 var fps = 0 
+var next_scene = ""
 
 var resolutions : Array = [Vector2(1280, 720),Vector2(1366, 768),
 Vector2(1600, 900),Vector2(1920, 1080)]

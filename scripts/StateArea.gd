@@ -14,3 +14,8 @@ func _on_StateArea_body_entered(body : Node2D):
 		yield(get_tree().create_timer(0.5),"timeout")
 		body.state = state
 
+
+
+func _on_win_body_entered(body):
+	if body.is_in_group("Box"):
+		Global.change_scene("res://scenes/level2.tscn")

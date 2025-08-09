@@ -19,8 +19,20 @@ func _ready() -> void:
 			$AnimatedSprite2D.material.set("shader_param/color",Color(0.27,0.27,1))
 		"Liquid":
 			$AnimatedSprite2D.material.set("shader_param/color",Color(1,0.3,0.3))
+			
+func _unhandled_input(event):
+	if  event.is_action_pressed("save"):
+		save_game(get_tree().current_scene.filename)
+		
+		
+func save_game(level_path) :
+	var config = ConfigFile.new()
+	config.set_value("progress","curent_level" , level_path)
+	config.save("user://save_game.cfg")
+
 
 func _physics_process(_delta) -> void:
+	$AnimatedSprite2D.play(state)
 	if $CPUParticles2D.emitting:
 		return
 	$Label.text = str(int($LiquidTimer.time_left)) if state == $AnimatedSprite2D.animation\
